@@ -50,7 +50,7 @@ num_generations = 100  # Fixed
 tournament_sizes = [2, 3, 5]
 prob_crossover = 0.9  # Fixed
 elite_size = 5        # Fixed
-'''
+```
 
 Each combination of population size and mutation rate was run, and the best and average fitness values were plotted for comparison. The results were saved as `plot_psize30.png` and `plot_psize100.png`.
 
