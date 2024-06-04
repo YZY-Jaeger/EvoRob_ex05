@@ -33,6 +33,7 @@ def sbx_crossover(parent1, parent2, eta=1.0, prob_crossover=0.9):
                 children2[i] = np.clip(children2[i], -32.768, 32.768)
     return children1, children2
 
+
 # Mutate an individual by altering its genes slightly
 def gaussian_mutation(individual, mutation_rate=0.1, sigma=0.1):#sigma is the offset value for mutation, default is 0.1
     for i in range(len(individual)):
@@ -40,7 +41,9 @@ def gaussian_mutation(individual, mutation_rate=0.1, sigma=0.1):#sigma is the of
         if np.random.rand() < mutation_rate:#mutation_rate is default 0.1, we apply mutation to 10% of the genes
             individual[i] += np.random.normal(0, sigma)
             individual[i] = np.clip(individual[i], -32.768, 32.768)
+        
     return individual
+
 
 # Replace the old population with the new one while maintaining some of the best
 def elitist_replacement(old_population, offspring, old_fitnesses, offspring_fitnesses, elite_size=5):#we dont use fixed elite_size for now
@@ -49,12 +52,15 @@ def elitist_replacement(old_population, offspring, old_fitnesses, offspring_fitn
     combined_fitnesses = np.concatenate((old_fitnesses, offspring_fitnesses))
     # Select the best individuals based on fitness
     indices = np.argsort(-combined_fitnesses)#we sort the fitnesses array in descending order
-    return combined_population[indices[:len(old_population)]]#as we dont have fixed elite_size, we return the same size of old_population
+    new_population = combined_population[indices[:len(old_population)]]
+    
+    print("New Population after Replacement:\n", new_population)  # Debug statement
+    return new_population #as we dont have fixed elite_size, we return the same size of old_population
                                                             #for example if we have size 100 of combined_population, we return the BEST 50(same as old population) individuals
 
 
 
-def evolutionary_algorithm(pop_size=50, num_generations=100):#Population size and number of generations are default 50 and 100
+def evolutionary_algorithm(pop_size, num_generations):
     # Initialize the population
     population = initialize_population(pop_size)
     fitnesses = np.array([fitness(ind[0], ind[1], ind[2]) for ind in population])
@@ -90,4 +96,5 @@ def evolutionary_algorithm(pop_size=50, num_generations=100):#Population size an
         avg_fitnesses.append(np.mean(fitnesses))
 
         print(f"Generation {generation}: Best Fitness = {best_fitnesses[-1]}, Average Fitness = {avg_fitnesses[-1]}")
+        print("Fitnesses:\n", fitnesses)  # Debug statement
     return best_fitnesses, avg_fitnesses

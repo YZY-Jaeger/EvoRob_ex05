@@ -17,9 +17,17 @@ plt.plot(best_fitnesses, label='Best Fitness')
 plt.plot(avg_fitnesses, label='Average Fitness')
 plt.xlabel('Generation')
 plt.ylabel('Fitness')
+plt.title(f'pop_size={pop_size}, mutation_rate={mutation_rate}, num_generations={num_generations}')
 plt.legend()
-plt.show()
 
+
+# Save plot
+plot_filename = "plot1.png"
+plt.savefig(plot_filename)
+print(f"Plot saved as {plot_filename}")
+
+# Show plot
+plt.show()
 
 '''
 def ackley_function_2d(x, y):
