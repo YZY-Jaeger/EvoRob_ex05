@@ -50,6 +50,30 @@ num_generations = 100  # Fixed
 tournament_sizes = [2, 3, 5]
 prob_crossover = 0.9  # Fixed
 elite_size = 5        # Fixed
+'''
 
 Each combination of population size and mutation rate was run, and the best and average fitness values were plotted for comparison. The results were saved as `plot_psize30.png` and `plot_psize100.png`.
 
+
+## Observations and Insights
+Results plot:
+
+
+Plot for Population Size 30
+![Plot for Population Size 30](plot_psize30.png)
+
+Plot for Population Size 100
+![Plot for Population Size 100](plot_psize100.png)
+
+
+From our experiments, we observed the following:
+
+- Population Size: Larger populations generally lead to better exploration of the search space, but at the cost of increased computational time.
+
+- Mutation Rate: Lower mutation rates tend to preserve good solutions, while higher rates increase diversity but may disrupt convergence. For example, in the result of `plot_psize100.png`, we can observe that relatively high mutation rate with high tournament size failed to converge, showing poor fitness.
+
+- Tournament Size: Smaller tournament sizes increase diversity by allowing less fit individuals a chance to reproduce, while larger sizes increase selection pressure. The plots generated provide insights into the trade-offs between exploration and exploitation in the evolutionary algorithm.
+
+## Conclusion
+
+This project demonstrated the application of an evolutionary algorithm with elitism to optimize the Ackley function. By tweaking various parameters, we were able to observe their impact on the algorithm's performance, leading to a deeper understanding of how to balance exploration and exploitation in evolutionary computation.
