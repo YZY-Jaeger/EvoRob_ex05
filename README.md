@@ -59,11 +59,15 @@ Each combination of population size and mutation rate was run, and the best and 
 Results plot:
 
 
-Plot for Population Size 30
-![Plot for Population Size 30](plot_psize30.png)
+<div align="center">
+    <strong>Plot for Population Size 30</strong><br>
+    <img src="plot_psize30.png" alt="Plot for Population Size 30">
+</div>
 
-Plot for Population Size 100
-![Plot for Population Size 100](plot_psize100.png)
+<div align="center">
+    <strong>Plot for Population Size 100</strong><br>
+    <img src="plot_psize100.png" alt="Plot for Population Size 100">
+</div>
 
 
 From our experiments, we observed the following:
